@@ -1,0 +1,40 @@
+ #!/usr/bin/python
+from bottle import post, route, request, run
+import os, time
+@route('/')
+@route('/', method='POST')
+def release_control():
+    if (request.POST.get("LIGA/DESLIGA")):
+        os.system("irsend SEND_ONCE TVSEMP KEY_POWER")
+    if (request.POST.get("REINICIAR")):
+         os.system("python teste.py")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <form method="POST" action="/">
+    <div id="content"><p><input id="submit" name="shutter_release" \
+    type="submit" value="Shutter Release"></p>
+    <p>Number of photos: <input name="number" type="text" size="9"/></p>
+    <input id="submit" value="Start" type="submit" />
+    </form></div>
+    <style>
+        body {
+        font: 15px/25px 'Fira Sans', sans-serif;
+        }
+        #content {
+        margin: 0px auto;
+        text-align: center;
+        }
+        #submit {
+        width: 11em;  height: 2em;
+        background: rgb(66, 184, 221);
+        border-radius: 5px;
+        color: #fff;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 25px;
+        font-weight: 900;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        letter-spacing: 3px;
+        border:none;
+        }
+    </style>
+    """
+run(host="0.0.0.0",port=8080, debug=True)
